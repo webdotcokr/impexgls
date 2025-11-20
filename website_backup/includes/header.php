@@ -26,7 +26,8 @@ $menu_items = [
         ['title' => 'Terms & Conditions of Service', 'url' => BASE_URL . '/pages/resources/terms.php']
     ]],
     ['title' => 'Notices', 'url' => BASE_URL . '/pages/notices/logistics-news.php', 'submenu' => [
-        ['title' => 'Logistics News', 'url' => BASE_URL . '/pages/notices/logistics-news.php']
+        ['title' => 'Logistics News', 'url' => BASE_URL . '/pages/notices/logistics-news.php'],
+        ['title' => 'Careers', 'url' => BASE_URL . '/pages/notices/careers.php']
     ]],
     // ['title' => 'Support', 'url' => BASE_URL . '/pages/support/faq.php', 'submenu' => [
     //     ['title' => 'Request A Quote', 'url' => BASE_URL . '/pages/support/request-quote.php'],

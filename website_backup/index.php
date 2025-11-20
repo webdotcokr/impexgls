@@ -267,7 +267,7 @@ $page_meta_info = isset($page_meta[$current_page]) ? array_merge($meta_defaults,
             }
         </style>
         
-        <div class="grid grid-cols-1 lg:grid-cols-3 min-h-[600px]">
+        <div class="grid grid-cols-1 lg:grid-cols-3 max-h-[900px] min-h-[600px]">
             <!-- 왼쪽: 지도 이미지 (33% 너비) -->
             <div class="relative bg-secondary overflow-hidden lg:col-span-1 hidden lg:block">
                 <img src="<?php echo BASE_URL; ?>/assets/images/index/left.webp" 

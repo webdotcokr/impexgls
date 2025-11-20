@@ -138,9 +138,29 @@ include '../includes/header.php';
         <h1 class="text-2xl font-bold text-gray-800">뉴스/공지사항 관리</h1>
         <p class="text-gray-600 mt-1">총 <?php echo number_format($total_count); ?>개의 게시물</p>
     </div>
-    <a href="create.php" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+    <a href="create.php<?php echo $category_filter ? '?category=' . $category_filter : ''; ?>" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
         <i class="fas fa-plus mr-2"></i>새 게시물
     </a>
+</div>
+
+<!-- 카테고리 탭 -->
+<div class="bg-white rounded-lg shadow mb-6">
+    <div class="border-b border-gray-200">
+        <nav class="flex -mb-px">
+            <a href="?category=logistics&<?php echo http_build_query(array_diff_key($_GET, ['category' => ''])); ?>"
+               class="py-4 px-6 text-sm font-medium border-b-2 <?php echo ($category_filter === 'logistics' || $category_filter === '') ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'; ?>">
+                <i class="fas fa-newspaper mr-2"></i>공지사항 (Logistics News)
+            </a>
+            <a href="?category=careers&<?php echo http_build_query(array_diff_key($_GET, ['category' => ''])); ?>"
+               class="py-4 px-6 text-sm font-medium border-b-2 <?php echo $category_filter === 'careers' ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'; ?>">
+                <i class="fas fa-briefcase mr-2"></i>커리어 (Careers)
+            </a>
+            <a href="?category=&<?php echo http_build_query(array_diff_key($_GET, ['category' => ''])); ?>"
+               class="ml-auto py-4 px-6 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                <i class="fas fa-list mr-2"></i>전체보기
+            </a>
+        </nav>
+    </div>
 </div>
 
 <!-- 검색 및 필터 -->

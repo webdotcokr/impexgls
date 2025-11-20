@@ -108,13 +108,21 @@ $page_meta = [
         'description' => 'Frequently asked questions about our services'
     ],
     // Notice 섹션
-    'pages/notice/logistics-news.php' => [
+    'pages/notices/logistics-news.php' => [
         'title' => 'Logistics News - IMPEX GLS',
         'description' => 'Latest updates and announcements from IMPEX GLS'
     ],
-    'pages/notice/logistics-news-detail.php' => [
+    'pages/notices/logistics-news-detail.php' => [
         'title' => 'News Detail - IMPEX GLS',
         'description' => 'Read the latest logistics news and updates'
+    ],
+    'pages/notices/careers.php' => [
+        'title' => 'Careers - IMPEX GLS',
+        'description' => 'Join our team and grow your career in global logistics'
+    ],
+    'pages/notices/careers-detail.php' => [
+        'title' => 'Career Opportunities - IMPEX GLS',
+        'description' => 'Explore career opportunities at IMPEX GLS'
     ]
 ];
 ?>

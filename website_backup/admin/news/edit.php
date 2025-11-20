@@ -45,17 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // 데이터 준비
         $title = trim($_POST['title'] ?? '');
-        $title_en = trim($_POST['title_en'] ?? '');
         $content = trim($_POST['content'] ?? '');
-        $content_en = trim($_POST['content_en'] ?? '');
-        $excerpt = trim($_POST['excerpt'] ?? '');
         $author = trim($_POST['author'] ?? 'IT Management Team');
         $category = $_POST['category'] ?? 'logistics';
         $status = $_POST['status'] ?? 'draft';
         $is_featured = isset($_POST['is_featured']) ? 1 : 0;
-        $meta_title = trim($_POST['meta_title'] ?? '');
-        $meta_description = trim($_POST['meta_description'] ?? '');
-        $meta_keywords = trim($_POST['meta_keywords'] ?? '');
         
         // 발행일 처리
         $published_at = $post['published_at'];
@@ -75,35 +69,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("
             UPDATE news_posts SET
                 title = :title,
-                title_en = :title_en,
                 content = :content,
-                content_en = :content_en,
-                excerpt = :excerpt,
                 author = :author,
                 category = :category,
                 status = :status,
                 is_featured = :is_featured,
-                meta_title = :meta_title,
-                meta_description = :meta_description,
-                meta_keywords = :meta_keywords,
                 published_at = :published_at,
                 updated_at = NOW()
             WHERE id = :id
         ");
-        
+
         $stmt->execute([
             ':title' => $title,
-            ':title_en' => $title_en,
             ':content' => $content,
-            ':content_en' => $content_en,
-            ':excerpt' => $excerpt,
             ':author' => $author,
             ':category' => $category,
             ':status' => $status,
             ':is_featured' => $is_featured,
-            ':meta_title' => $meta_title,
-            ':meta_description' => $meta_description,
-            ':meta_keywords' => $meta_keywords,
             ':published_at' => $published_at,
             ':id' => $id
         ]);
@@ -120,7 +102,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // 카테고리 목록
-$categories = ['logistics', 'announcement', 'maintenance', 'service', 'general'];
+$categories = [
+    'logistics' => 'Logistics News (공지사항)',
+    'careers' => 'Careers (커리어)',
+    'announcement' => 'Announcement',
+    'maintenance' => 'Maintenance',
+    'service' => 'Service',
+    'general' => 'General'
+];
 
 $csrf_token = generateCSRFToken();
 
@@ -145,59 +134,31 @@ include '../includes/header.php';
                 <h3 class="text-lg font-semibold text-gray-800">기본 정보</h3>
             </div>
             <div class="p-6 space-y-6">
-                <!-- 제목 (한국어) -->
+                <!-- 제목 -->
                 <div>
                     <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
                         제목 <span class="text-red-500">*</span>
                     </label>
-                    <input type="text" 
-                           id="title" 
-                           name="title" 
+                    <input type="text"
+                           id="title"
+                           name="title"
                            value="<?php echo e($post['title']); ?>"
                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                            required>
                 </div>
                 
-                <!-- 제목 (영어) -->
-                <div>
-                    <label for="title_en" class="block text-sm font-medium text-gray-700 mb-2">
-                        제목 (영어)
-                    </label>
-                    <input type="text" 
-                           id="title_en" 
-                           name="title_en" 
-                           value="<?php echo e($post['title_en']); ?>"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <!-- 카테고리 (읽기전용) -->
+                <input type="hidden" name="category" value="<?php echo e($post['category']); ?>">
+                <div class="bg-gray-50 border border-gray-200 rounded-md p-4 mb-4">
+                    <p class="text-sm text-gray-700">
+                        <span class="font-medium">카테고리:</span>
+                        <strong class="text-gray-900"><?php echo e($categories[$post['category']] ?? $post['category']); ?></strong>
+                        <span class="text-gray-500 ml-2">(수정 불가)</span>
+                    </p>
                 </div>
-                
-                <!-- 요약 -->
+
+                <!-- 작성자 -->
                 <div>
-                    <label for="excerpt" class="block text-sm font-medium text-gray-700 mb-2">
-                        요약
-                    </label>
-                    <textarea id="excerpt" 
-                              name="excerpt" 
-                              rows="3"
-                              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><?php echo e($post['excerpt']); ?></textarea>
-                    <p class="mt-1 text-sm text-gray-500">목록에 표시될 짧은 요약문</p>
-                </div>
-                
-                <!-- 카테고리/작성자 -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label for="category" class="block text-sm font-medium text-gray-700 mb-2">
-                            카테고리
-                        </label>
-                        <select id="category" 
-                                name="category"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <?php foreach ($categories as $cat): ?>
-                            <option value="<?php echo $cat; ?>" <?php echo $post['category'] == $cat ? 'selected' : ''; ?>>
-                                <?php echo ucfirst($cat); ?>
-                            </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
                     <div>
                         <label for="author" class="block text-sm font-medium text-gray-700 mb-2">
                             작성자
@@ -240,69 +201,16 @@ include '../includes/header.php';
                 <h3 class="text-lg font-semibold text-gray-800">내용</h3>
             </div>
             <div class="p-6 space-y-6">
-                <!-- 내용 (한국어) -->
+                <!-- 내용 -->
                 <div>
                     <label for="content" class="block text-sm font-medium text-gray-700 mb-2">
                         내용 <span class="text-red-500">*</span>
                     </label>
-                    <textarea id="content" 
-                              name="content" 
+                    <textarea id="content"
+                              name="content"
                               rows="10"
                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                               required><?php echo e($post['content']); ?></textarea>
-                </div>
-                
-                <!-- 내용 (영어) -->
-                <div>
-                    <label for="content_en" class="block text-sm font-medium text-gray-700 mb-2">
-                        내용 (영어)
-                    </label>
-                    <textarea id="content_en" 
-                              name="content_en" 
-                              rows="10"
-                              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><?php echo e($post['content_en']); ?></textarea>
-                </div>
-            </div>
-        </div>
-        
-        <!-- SEO 설정 -->
-        <div class="bg-white rounded-lg shadow mb-6">
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-800">SEO 설정</h3>
-            </div>
-            <div class="p-6 space-y-6">
-                <div>
-                    <label for="meta_title" class="block text-sm font-medium text-gray-700 mb-2">
-                        메타 제목
-                    </label>
-                    <input type="text" 
-                           id="meta_title" 
-                           name="meta_title" 
-                           value="<?php echo e($post['meta_title']); ?>"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <p class="mt-1 text-sm text-gray-500">비워두면 게시물 제목이 사용됩니다</p>
-                </div>
-                
-                <div>
-                    <label for="meta_description" class="block text-sm font-medium text-gray-700 mb-2">
-                        메타 설명
-                    </label>
-                    <textarea id="meta_description" 
-                              name="meta_description" 
-                              rows="3"
-                              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><?php echo e($post['meta_description']); ?></textarea>
-                </div>
-                
-                <div>
-                    <label for="meta_keywords" class="block text-sm font-medium text-gray-700 mb-2">
-                        메타 키워드
-                    </label>
-                    <input type="text" 
-                           id="meta_keywords" 
-                           name="meta_keywords" 
-                           value="<?php echo e($post['meta_keywords']); ?>"
-                           placeholder="키워드1, 키워드2, 키워드3"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
             </div>
         </div>
@@ -353,5 +261,50 @@ include '../includes/header.php';
         </div>
     </form>
 </div>
+
+<!-- Summernote CSS -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+<!-- Summernote JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Summernote 초기화
+    $('#content').summernote({
+        height: 400,
+        placeholder: 'Enter content...',
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ],
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Helvetica', 'Impact', 'Tahoma', 'Times New Roman', 'Verdana', 'Poppins'],
+        fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '24', '36', '48'],
+        callbacks: {
+            onImageUpload: function(files) {
+                // 이미지 업로드 기능은 향후 구현 가능
+                // 현재는 base64 인코딩으로 처리됨
+                for(let i = 0; i < files.length; i++) {
+                    let reader = new FileReader();
+                    reader.onload = function(e) {
+                        let img = $('<img>').attr('src', e.target.result);
+                        $('#content').summernote('insertNode', img[0]);
+                    };
+                    reader.readAsDataURL(files[i]);
+                }
+            }
+        }
+    });
+});
+</script>
 
 <?php include '../includes/footer.php'; ?>

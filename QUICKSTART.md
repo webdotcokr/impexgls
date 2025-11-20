@@ -155,10 +155,12 @@ impexgls/
 2. ⬜ Git 저장소 생성 및 Push
 3. ⬜ AWS Lightsail 인스턴스 생성
 4. ⬜ Lightsail에 Docker 배포
+5. ⬜ SSL 인증서 적용 및 도메인 연결
 
 자세한 배포 가이드는 다음 파일을 참조하세요:
-- [AWS_Lightsail_Docker 배포 방식.md](./AWS_Lightsail_Docker%20배포%20방식.md)
-- [README_LOCAL_DOCKER.md](./README_LOCAL_DOCKER.md)
+- [AWS_Lightsail_Docker 배포 방식.md](./AWS_Lightsail_Docker%20배포%20방식.md) - 서버 배포
+- [SSL_DOMAIN_SETUP.md](./SSL_DOMAIN_SETUP.md) - SSL 및 도메인 연결
+- [README_LOCAL_DOCKER.md](./README_LOCAL_DOCKER.md) - 로컬 개발 환경
 
 ---
 
