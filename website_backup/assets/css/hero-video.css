@@ -1,0 +1,215 @@
+/* Hero Video Section Styles */
+.hero-video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+/* Hero Content Positioning */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.hero-text {
+    margin-bottom: 3rem; /* 48px */
+    padding-bottom: 3rem; /* 48px */
+}
+
+@media (min-width: 1024px) {
+    .hero-text {
+        margin-bottom: 4rem; /* 64px */
+        padding-bottom: 4rem; /* 64px */
+    }
+}
+
+.hero-video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Video transition overlay */
+.video-transition-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 2;
+}
+
+.video-transition-overlay.active {
+    opacity: 1;
+}
+
+/* Video Controls */
+.video-controls-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.video-play-pause {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-play-pause:hover {
+    transform: scale(1.05);
+}
+
+.video-play-pause:active {
+    transform: scale(0.95);
+}
+
+/* Progress Bars */
+.video-progress-bars {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.video-progress-item {
+    position: relative;
+}
+
+.video-progress-bar {
+    position: relative;
+    width: 4rem;
+    height: 0.15rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.0625rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.video-progress-item.active .video-progress-bar {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.video-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.1s linear;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .video-controls-wrapper {
+        margin-top: 1.5rem;
+    }
+    
+    .video-progress-bar {
+        width: 3rem;
+    }
+    
+    .video-play-pause {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .video-play-pause svg {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .hero-video-container video {
+        transition: none;
+    }
+    
+    .video-progress-fill {
+        transition: none;
+    }
+}
+
+/* Loading State */
+.hero-video-container.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Hero Text Styles */
+.hero-label {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 125%; /* 25px */
+    letter-spacing: -0.8px;
+}
+
+.hero-title {
+    font-family: Poppins;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 63px; /* 114.545% */
+    letter-spacing: -1.65px;
+}
+
+.hero-subtitle {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: -0.36px;
+}
+
+/* Progress bar active state styling */
+.video-progress-item.active .video-progress-bar {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.video-progress-item:not(.active) .video-progress-fill {
+    display: none;
+}
+
+/* Video Controls Position */
+.video-controls-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .video-controls-wrapper {
+        margin-top: 3rem;
+    }
+}

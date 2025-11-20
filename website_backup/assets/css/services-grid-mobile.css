@@ -1,0 +1,37 @@
+/* Services Grid Mobile Styles */
+@media (max-width: 1023px) {
+    /* 모바일에서 모든 gap 제거 */
+    .services-grid .grid {
+        gap: 0 !important;
+    }
+    
+    .services-grid .grid > div {
+        gap: 0 !important;
+    }
+    
+    .services-grid .grid-cols-2 {
+        gap: 0 !important;
+    }
+    
+    /* 모바일 서비스 카드 내부 패딩 조정 */
+    .service-card-content {
+        padding: 0 26px 20px 26px !important;
+    }
+    
+    /* 모바일에서 aspect ratio */
+    .service-item.aspect-\[335\/255\] {
+        aspect-ratio: 335 / 255;
+    }
+    
+    /* 모바일 타이틀 줄바꿈 */
+    .service-title br {
+        display: inline;
+    }
+}
+
+/* 태블릿 (768px - 1023px) 조정 */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .service-title {
+        font-size: 20px !important;
+    }
+}

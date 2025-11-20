@@ -1,0 +1,92 @@
+/* Hero Section Mobile Optimization */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+    
+    .hero-label {
+        font-size: 14px !important;
+        line-height: 125% !important;
+        letter-spacing: -0.56px !important;
+    }
+    
+    .hero-title {
+        font-size: 32px !important;
+        line-height: 38px !important;
+        letter-spacing: -0.96px !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px !important;
+        line-height: 140% !important;
+        letter-spacing: -0.28px !important;
+    }
+    
+    .hero-text {
+        padding: 0 1rem;
+    }
+    
+    /* 모바일 비디오 컨트롤 위치 조정 */
+    .video-controls-wrapper {
+        position: static;
+        margin-top: 1.5rem;
+    }
+    
+    .hero-text {
+        margin-bottom: 2rem; /* 32px */
+    }
+    
+    .video-play-pause {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+    
+    .video-play-pause svg {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+    }
+    
+    .video-progress-bar {
+        width: 2.5rem !important;
+    }
+    
+    /* 스크롤 인디케이터 숨기기 */
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* 태블릿 최적화 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem !important;
+    }
+    
+    .video-controls-wrapper {
+        gap: 1.5rem;
+    }
+}
+
+/* 가로 모드 최적화 */
+@media (max-width: 896px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        padding-top: 3rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem !important;
+    }
+    
+    .video-controls-wrapper {
+        bottom: 1rem;
+    }
+}

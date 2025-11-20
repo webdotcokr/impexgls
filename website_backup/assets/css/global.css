@@ -1,0 +1,498 @@
+/* Global Styles for IMPEX GLS Website */
+
+/* ===================================
+   Root Variables - Color Scheme
+   =================================== */
+:root {
+    --color-primary: #9E0C1B;
+    --color-secondary: #1B2951;
+    --color-secondary-dark: #212328;
+    --color-g50: #f9fafb;
+    --color-g100: #f3f4f6;
+    --color-g200: #e5e7eb;
+    --color-g300: #d1d5db;
+    --color-g400: #9ca3af;
+    --color-g500: #6b7280;
+    --color-g600: #4b5563;
+    --color-g700: #374151;
+    --color-g800: #1f2937;
+    --color-g900: #111827;
+}
+
+/* ===================================
+   0. Global Font Settings
+   =================================== */
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Ensure all text elements use Poppins */
+h1, h2, h3, h4, h5, h6,
+p, span, a, li, td, th,
+input, textarea, select, button,
+label, div {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===================================
+   1. Subpage Header Styles
+   =================================== */
+.subpage-header {
+    position: relative;
+    overflow: hidden;
+}
+
+.subpage-header-text {
+    background: white;
+    padding: 3rem 0;
+    text-align: left;
+}
+
+.subpage-category {
+    font-size: 1.25rem;
+    color: #B3B5BD;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 125%; /* 25px */
+    letter-spacing: -0.8px;
+    margin-bottom: 4px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.subpage-title {
+    font-size: 3.4375rem;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    color: #000;
+    animation: fadeInUp 0.8s ease-out;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.subpage-header-image {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.subpage-header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.subpage-header-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .subpage-header-text {
+        padding-top: 50px;
+        padding-bottom: 16px;
+    }
+    
+    .subpage-category {
+        font-size: 11px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: 125%; /* 13.75px */
+        letter-spacing: -0.44px;
+    }
+    
+    .subpage-title {
+        font-size: 1.875rem;
+    }
+    
+    .subpage-header-image {
+        height: 135px;
+    }
+}
+
+/* ===================================
+   2. Desktop Subnav Styles
+   =================================== */
+.desktop-subnav {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 0;
+}
+
+.desktop-subnav.hidden.lg\:block.sticky {
+    padding: 0;
+}
+
+.desktop-subnav ul {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.desktop-subnav a {
+    font-size: 1.125rem;
+    display: block;
+    padding: 1.5rem 0;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    color: #9496A1;
+    transition: color 0.3s ease;
+    position: relative;
+    transition: 0.2s ease-in;
+}
+
+.desktop-subnav a:hover {
+    color: var(--color-primary);
+}
+
+.desktop-subnav a.active {
+    color: #000;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+/* ===================================
+   3. Tab Navigation Styles
+   =================================== */
+.tab-button {
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #9496A1;
+    background: #F3F4F8;
+    border: none;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    line-height: 22px; /* 137.5% */
+    letter-spacing: -0.48px;
+    min-width: fit-content;
+}
+
+.tab-button:hover {
+    color: #6B7280;
+    background: #E5E7EB;
+}
+
+.tab-button.active {
+    color: #E31E24;
+    background: #fff;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+    .tab-button {
+        padding: 9px 12px;
+        font-size: 14px;
+        line-height: 20px;
+        border-radius: 4px;
+    }
+    
+    .tab-button.active {
+        background: #fff;
+    }
+}
+
+/* ===================================
+   4. Section Header Styles
+   =================================== */
+.section-header {
+    text-align: left;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    color: #000;
+    font-size: 2.5rem;    font-style: normal;
+    font-weight: 700;
+    line-height: 56px; /* 140% */
+    letter-spacing: -1.2px;
+    margin-bottom: 20px;
+}
+
+.section-header p {
+    color: #000;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 26px; /* 144.444% */
+    letter-spacing: -0.54px;
+}
+
+@media (max-width: 768px) {
+    .section-header h2 {
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 35px; /* 166.667% */
+        letter-spacing: -0.72px;
+        margin-bottom: 12px;
+    }
+    
+    .section-header p {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 159%; /* 22.26px */
+        letter-spacing: -0.28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* ===================================
+   5. Mobile Subnav Dropdown Styles
+   =================================== */
+.mobile-subnav {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#mobileSubnavDropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#mobileSubnavDropdown.show {
+    max-height: 500px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-subnav button[aria-expanded="true"] #subnavArrow {
+    transform: rotate(180deg);
+}
+
+#mobileSubnavDropdown a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    color: #374151;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+#mobileSubnavDropdown a:last-child {
+    border-bottom: none;
+}
+
+#mobileSubnavDropdown a:hover {
+    background: #f9fafb;
+    color: var(--color-primary);
+}
+
+#mobileSubnavDropdown a.active {
+    background: #fef2f2;
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+/* Mobile subnav toggle icon rotation */
+.mobile-subnav button svg {
+    transition: transform 0.3s ease;
+}
+
+.mobile-subnav button.active svg {
+    transform: rotate(180deg);
+}
+
+/* Mobile subnav link font styles */
+@media (max-width: 768px) {
+    #mobileSubnavDropdown a span {
+        font-size: 15px !important;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%; /* 21px */
+        letter-spacing: -0.3px;
+    }
+}
+
+/* ===================================
+   6. Link Card Styles
+   =================================== */
+.link-card {
+    background: white;
+    border: none;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.link-card:hover {
+    transform: translateY(-5px);
+}
+
+.link-logo-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.link-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0 0 0;
+}
+
+.link-title {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px; /* 140% */
+    letter-spacing: -0.6px;
+    color: #1f2937;
+    margin-bottom: 12px;
+}
+
+.link-description {
+    color: var(--cg500, #777986);
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: -0.42px;
+    flex-grow: 1;
+}
+
+.external-link-icon {
+    width: 20px;
+    height: 20px;
+    color: #6b7280;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .link-title {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 22px; /* 137.5% */
+        letter-spacing: -0.48px;
+    }
+    
+    .link-description {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px; /* 150% */
+        letter-spacing: -0.36px;
+    }
+}
+
+/* 639px 이하에서도 2열 유지 */
+@media (max-width: 639px) {
+    .link-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 40px 12px !important;
+    }
+}
+
+/* ===================================
+   7. Typography Utilities
+   =================================== */
+/* Body Small */
+.text-body-sm {
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: -0.42px;
+}
+
+/* Body Large */
+.text-body-lg {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px; /* 144.444% */
+    letter-spacing: -0.54px;
+}
+
+@media (max-width: 768px) {
+    .text-body-lg {
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 22px; /* 146.667% */
+        letter-spacing: -0.45px;
+    }
+}
+
+/* ===================================
+   8. About Pages Styles
+   =================================== */
+/* About 페이지 h2, h3 모바일 스타일 */
+@media (max-width: 768px) {
+    .about-page h2 {
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 37px; /* 142.308% */
+        letter-spacing: -0.78px;
+    }
+    
+    .about-page h3 {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px; /* 142.857% */
+        letter-spacing: -0.42px;
+    }
+}
+
+/* ===================================
+   9. Utility Classes
+   =================================== */
+/* Scrollbar Hide */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}

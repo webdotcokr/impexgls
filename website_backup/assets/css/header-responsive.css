@@ -1,0 +1,226 @@
+/* PC Header Responsive Styles */
+
+/* Container Settings */
+.header-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Header Height */
+.pc-header .flex.items-center.justify-between {
+    height: 125px;
+}
+
+/* Logo Responsive */
+.logo-pc {
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.logo-pc img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Navigation Container */
+.pc-nav {
+    margin-right: clamp(2rem, 4vw, 5rem);
+}
+
+/* Navigation List */
+.pc-nav-list {
+    height: 125px;
+    gap: clamp(1.5rem, 3vw, 4rem);
+}
+
+/* Navigation Links */
+.pc-nav-link {
+    font-size: clamp(14px, 1.2vw, 18px);
+    white-space: nowrap;
+    padding: 0 clamp(0.5rem, 1vw, 1rem);
+}
+
+/* CTA Button */
+.header-cta-btn {
+    font-size: clamp(13px, 1.1vw, 15px);
+    padding: 8px clamp(12px, 1.5vw, 16px);
+    white-space: nowrap;
+}
+
+/* Mega Menu */
+.mega-menu-container {
+    top: 125px;
+}
+
+.mega-menu-content {
+    max-width: 1920px;
+    padding: 2.5rem 2rem;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1600px) {
+    .header-container {
+        padding: 0 1.5rem;
+    }
+    
+    .logo-pc img {
+        max-width: 250px;
+    }
+    
+    .pc-nav {
+        margin-right: clamp(1.5rem, 3vw, 3rem);
+    }
+    
+    .pc-nav-list {
+        gap: clamp(1rem, 2.5vw, 3rem);
+    }
+    
+    .pc-nav-link {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .pc-header .flex.items-center.justify-between {
+        height: 100px;
+    }
+    
+    .pc-nav-list {
+        height: 100px;
+    }
+    
+    .logo-pc img {
+        max-width: 220px;
+    }
+    
+    .pc-nav {
+        margin-right: 2.5rem;
+    }
+    
+    .pc-nav-list {
+        gap: 1.5rem;
+    }
+    
+    .pc-nav-link {
+        font-size: 15px;
+        padding: 0 0.75rem;
+    }
+    
+    .header-cta-btn {
+        font-size: 14px;
+        padding: 6px 14px;
+    }
+    
+    .mega-menu-container {
+        top: 100px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .header-container {
+        padding: 0 1rem;
+    }
+    
+    .pc-header .flex.items-center.justify-between {
+        height: 80px;
+    }
+    
+    .pc-nav-list {
+        height: 80px;
+        gap: 1rem;
+    }
+    
+    .logo-pc img {
+        max-width: 200px;
+    }
+    
+    .pc-nav {
+        margin-right: 2rem;
+    }
+    
+    .pc-nav-link {
+        font-size: 14px;
+        padding: 0 0.5rem;
+    }
+    
+    .header-cta-btn {
+        font-size: 13px;
+        padding: 5px 12px;
+    }
+    
+    .mega-menu-container {
+        top: 80px;
+    }
+    
+    .mega-menu-content {
+        padding: 2rem 1rem;
+    }
+    
+    .mega-menu-content .grid {
+        gap: 2rem;
+    }
+}
+
+/* Fix for very small PC screens (1024px - 1280px) */
+@media (min-width: 1024px) and (max-width: 1280px) {
+    /* Ensure navigation doesn't break */
+    .pc-nav-list {
+        gap: 0.75rem;
+    }
+    
+    .pc-nav-link {
+        font-size: 13px;
+        letter-spacing: -0.01em;
+    }
+    
+    /* Adjust logo if needed */
+    .logo-pc img {
+        max-width: 180px;
+    }
+    
+    /* Reduce button size */
+    .header-cta-btn {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+    
+    /* Maintain gap between nav and button */
+    .pc-nav {
+        margin-right: 1.5rem;
+    }
+}
+
+/* Dynamic font scaling for smooth transitions */
+@media (min-width: 1281px) and (max-width: 1920px) {
+    .logo-pc img {
+        max-width: calc(220px + (300 - 220) * ((100vw - 1280px) / (1920 - 1280)));
+    }
+    
+    .pc-header .flex.items-center.justify-between {
+        height: calc(80px + (125 - 80) * ((100vw - 1280px) / (1920 - 1280)));
+    }
+    
+    .pc-nav-list {
+        height: calc(80px + (125 - 80) * ((100vw - 1280px) / (1920 - 1280)));
+    }
+    
+    .mega-menu-container {
+        top: calc(80px + (125 - 80) * ((100vw - 1280px) / (1920 - 1280)));
+    }
+}
+
+/* Header spacer adjustment */
+@media (max-width: 1400px) {
+    .header-spacer.lg\\:h-\\[125px\\] {
+        height: 100px !important;
+    }
+}
+
+@media (max-width: 1280px) {
+    .header-spacer.lg\\:h-\\[125px\\] {
+        height: 80px !important;
+    }
+}

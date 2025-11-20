@@ -1,0 +1,261 @@
+/* 반응형 디자인 스타일시트 */
+
+/* 기본 반응형 컨테이너 */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* 모바일 우선 접근법 */
+
+/* 모바일 (기본) */
+@media (max-width: 639px) {
+    /* 타이포그래피 */
+    h1 { font-size: 2rem !important; }
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.25rem; }
+    
+    /* 여백 조정 */
+    .section-padding {
+        padding: 3rem 0 !important;
+    }
+    
+    /* 그리드 시스템 */
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem !important;
+    }
+    
+    /* 히어로 섹션 */
+    .hero-section {
+        min-height: 400px !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* 카드 레이아웃 */
+    .card-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* 테이블 반응형 */
+    .responsive-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+    
+    /* 폼 요소 */
+    .form-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* 버튼 */
+    .btn {
+        width: 100%;
+        padding: 0.75rem 1rem !important;
+    }
+    
+    /* 이미지 */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* 모달 */
+    .modal-content {
+        margin: 1rem;
+        max-height: calc(100vh - 2rem);
+    }
+}
+
+/* 태블릿 */
+@media (min-width: 640px) and (max-width: 1023px) {
+    /* 타이포그래피 */
+    h1 { font-size: 2.5rem !important; }
+    h2 { font-size: 2rem !important; }
+    
+    /* 그리드 시스템 */
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* 카드 레이아웃 */
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* 사이드바 레이아웃 */
+    .sidebar-layout {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+/* 데스크톱 */
+@media (min-width: 1024px) {
+    /* PC 전용 호버 효과 */
+    .hover-effect:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 큰 화면용 최대 너비 */
+    .max-w-content {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+}
+
+/* 특정 컴포넌트 반응형 스타일 */
+
+/* 네비게이션 */
+@media (max-width: 1023px) {
+    .pc-header { display: none !important; }
+    .mobile-header { display: block !important; }
+    .header-spacer { height: 64px !important; }
+}
+
+/* 푸터 */
+@media (max-width: 767px) {
+    footer .grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        margin: 0;
+    }
+    
+    .footer-links {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+}
+
+/* 서비스 카드 */
+@media (max-width: 639px) {
+    .service-card {
+        padding: 1.5rem !important;
+    }
+    
+    .service-icon {
+        width: 60px !important;
+        height: 60px !important;
+    }
+}
+
+/* 타임라인 */
+@media (max-width: 767px) {
+    .timeline-item {
+        padding-left: 2rem !important;
+    }
+    
+    .timeline-date {
+        position: static !important;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* 맵 */
+@media (max-width: 767px) {
+    .map-container {
+        height: 300px !important;
+    }
+}
+
+/* 스와이퍼/슬라이더 */
+@media (max-width: 639px) {
+    .swiper-slide {
+        padding: 0 0.5rem;
+    }
+    
+    .client-slider .swiper-slide {
+        width: 120px !important;
+    }
+}
+
+/* 통계 카드 */
+@media (max-width: 767px) {
+    .stat-card {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 2rem !important;
+    }
+}
+
+/* FAQ 아코디언 */
+@media (max-width: 639px) {
+    .faq-question {
+        font-size: 1rem !important;
+        padding: 1rem !important;
+    }
+    
+    .faq-answer {
+        padding: 1rem !important;
+    }
+}
+
+/* 유틸리티 클래스 */
+@media (max-width: 639px) {
+    .hide-mobile { display: none !important; }
+    .show-mobile { display: block !important; }
+    .text-center-mobile { text-align: center !important; }
+    .px-mobile { padding-left: 1rem !important; padding-right: 1rem !important; }
+}
+
+@media (min-width: 640px) {
+    .hide-desktop { display: none !important; }
+    .show-desktop { display: block !important; }
+}
+
+/* 프린트 스타일 */
+@media print {
+    .no-print,
+    header,
+    footer,
+    .mobile-menu,
+    .btn,
+    .pagination {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+/* 다크 모드 지원 (선택사항) */
+@media (prefers-color-scheme: dark) {
+    /* 다크 모드 스타일 추가 가능 */
+}
+
+/* 접근성 - 모션 감소 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

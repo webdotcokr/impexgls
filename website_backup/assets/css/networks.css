@@ -1,0 +1,322 @@
+/* Networks 섹션 전용 스타일 */
+
+/* 지도 관련 스타일 */
+.network-map {
+    position: relative;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.map-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 지도 마커 */
+.map-marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--color-primary);
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.map-marker:hover {
+    transform: scale(1.2);
+    z-index: 10;
+}
+
+.map-marker.active {
+    background: var(--color-secondary);
+    transform: scale(1.3);
+}
+
+/* 위치 카드 */
+.location-card {
+    background: white;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 40px;
+    border: 1px solid var(--color-g100);
+}
+
+.location-card:hover {
+    transform: translateY(-3px);
+}
+
+.location-card.active {
+    border: 2px solid var(--color-primary);
+}
+
+.location-card h3 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.66px;
+    margin-bottom: 24px;
+    min-height: 54px;
+}
+
+.satellite-text {
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    color: #B3B5BD;
+}
+
+/* 섹션 제목 스타일 */
+.location-info-section h2 {
+    color: var(--color-secondary);
+    font-family: Poppins;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+/* 네트워크 그리드 */
+.network-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .network-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .network-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 위치 정보 리스트 */
+.location-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.location-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    /* Body Sm */
+    color: #000;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.42px;
+}
+
+.location-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.location-info-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+/* 국가별 섹션 */
+.country-section {
+    margin-bottom: 3rem;
+}
+
+.country-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.country-flag {
+    width: 40px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* 서비스 태그 */
+.service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.service-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #e5e7eb;
+    color: #374151;
+    font-size: 0.75rem;
+    border-radius: 9999px;
+}
+
+/* 지도 툴팁 */
+.map-tooltip {
+    position: absolute;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 200px;
+    display: none;
+    z-index: 100;
+}
+
+.map-tooltip.show {
+    display: block;
+}
+
+.map-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+}
+
+/* 필터 버튼 */
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #f3f4f6;
+}
+
+.filter-btn.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* 통계 카드 */
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #6b7280;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* 지점 정보 섹션 모바일 스타일 */
+@media (max-width: 768px) {
+    .location-info-section {
+        padding-top: 0 !important;
+        padding-bottom: 120px !important;
+        margin-top: -56px;
+    }
+    
+    /* 지도 섹션 모바일 패딩 */
+    .map-section-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 3rem !important;
+    }
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+    .network-map {
+        padding: 1rem;
+    }
+    
+    .location-card {
+        padding: 30px;
+    }
+    
+    .location-card h3 {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.54px;
+    }
+    
+    .location-info-item {
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px; /* 153.846% */
+        letter-spacing: -0.39px;
+        margin-bottom: 12px;
+    }
+    
+    .location-info-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .country-header {
+        font-size: 1.125rem;
+    }
+    
+    .filter-buttons {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.375rem 1rem;
+        font-size: 0.8125rem;
+    }
+}
